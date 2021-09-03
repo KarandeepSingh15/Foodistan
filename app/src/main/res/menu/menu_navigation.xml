@@ -1,27 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <group
-        android:checkableBehavior="single">
+    <group android:checkableBehavior="single">
         <item
             android:id="@+id/HomePage"
             android:icon="@drawable/ic_home"
             android:title="@string/home_page" />
         <item
+            android:id="@+id/Profile"
+            android:icon="@drawable/ic_profile"
+            android:title="@string/profile" />
+        <item
             android:id="@+id/Favourites"
             android:icon="@drawable/ic_favourites"
             android:title="@string/favourites" />
         <item
-            android:id="@+id/Profile"
-            android:icon="@drawable/ic_profile"
-            android:title="@string/profile" />
+            android:id="@+id/OrderHistory"
+            android:icon="@drawable/ic_order_history"
+            android:title="@string/order_history" />
+
         <item
             android:id="@+id/FAQ"
             android:icon="@drawable/ic_faq"
             android:title="@string/faqs" />
         <item
             android:id="@+id/Logout"
-            android:title="@string/logout"
             android:icon="@drawable/ic_logout"
-            />
+            android:title="@string/logout" />
     </group>
 </menu>

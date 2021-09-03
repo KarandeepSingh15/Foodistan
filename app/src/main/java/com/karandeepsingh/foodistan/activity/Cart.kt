@@ -2,6 +2,7 @@ package com.karandeepsingh.foodistan.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.karandeepsingh.foodistan.R
 
 class Cart : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -11,6 +11,7 @@ import android.view.MenuItem
 import android.widget.Button
 import android.widget.FrameLayout
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -30,7 +31,7 @@ class HomeScreen : AppCompatActivity() {
     lateinit var navigationView: NavigationView
     lateinit var sharedPreferences: SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
-        var previousItem:MenuItem?=null
+        var previousItem: MenuItem? = null
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_homescreen)
@@ -55,15 +56,14 @@ class HomeScreen : AppCompatActivity() {
         drawerLayout.addDrawerListener(actionBarDrawerToggle)
         actionBarDrawerToggle.syncState()
         navigationView.setNavigationItemSelectedListener {
-            if(previousItem?.isChecked==true)
-            {
-                previousItem?.isChecked=false
+            if (previousItem?.isChecked == true) {
+                previousItem?.isChecked = false
             }
-            it.isCheckable=true
-            it.isChecked=true
-            previousItem=it
-            val runnable= Runnable { drawerLayout.closeDrawer(GravityCompat.START) }
-            Handler(Looper.getMainLooper()).postDelayed(runnable,100)
+            it.isCheckable = true
+            it.isChecked = true
+            previousItem = it
+            val runnable = Runnable { drawerLayout.closeDrawer(GravityCompat.START) }
+            Handler(Looper.getMainLooper()).postDelayed(runnable, 100)
             when (it.itemId) {
                 R.id.HomePage -> {
                     openHome()
@@ -92,16 +92,27 @@ class HomeScreen : AppCompatActivity() {
 
                 }
                 R.id.Logout -> {
-                    sharedPreferences.edit().clear().apply()
-                    val intent = Intent(this@HomeScreen, LoginActivity::class.java)
-                    startActivity(intent)
-                    finish()
+                    val alert = AlertDialog.Builder(this@HomeScreen)
+                    alert.setTitle("Confirmation")
+                    alert.setMessage("Are you sure you want to exit?")
+                    alert.setPositiveButton("Yes") { text, Listener ->
+                        sharedPreferences.edit().clear().apply()
+                        val intent = Intent(this@HomeScreen, LoginActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    }
+                    alert.setNegativeButton("No") { text, Listener ->
+                        navigationView.setCheckedItem(R.id.HomePage)
+
+                    }
+                    alert.create()
+                    alert.show()
+
                 }
 
             }
             return@setNavigationItemSelectedListener true
         }
-
 
 
     }
@@ -120,12 +131,13 @@ class HomeScreen : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        val frag=supportFragmentManager.findFragmentById(R.id.FrameLayout)
-        when(frag)
-        {
-            !is HomePage->{openHome()
-                supportActionBar?.title="All Restaurants"}
-            else-> super.onBackPressed()
+        val frag = supportFragmentManager.findFragmentById(R.id.FrameLayout)
+        when (frag) {
+            !is HomePage -> {
+                openHome()
+                supportActionBar?.title = "All Restaurants"
+            }
+            else -> super.onBackPressed()
         }
 
     }
