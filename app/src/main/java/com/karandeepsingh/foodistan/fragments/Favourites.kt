@@ -23,6 +23,7 @@ class Favourites : Fragment() {
     lateinit var recyclerLayoutManager: RecyclerView.LayoutManager
     lateinit var recyclerAdapter:RestaurantAdapter
     lateinit var ProgressLayout:RelativeLayout
+    lateinit var rlIsEmpty:RelativeLayout
     var favouritesList= arrayListOf<Restaurant>()
 
 
@@ -37,10 +38,17 @@ class Favourites : Fragment() {
         ProgressLayout=view.findViewById(R.id.ProgressLayout)
         ProgressLayout.visibility=View.VISIBLE
         recyclerFavourites.layoutManager=recyclerLayoutManager
+        rlIsEmpty=view.findViewById(R.id.rlIsEmpty)
+        rlIsEmpty.visibility=View.GONE
         if(activity!=null)
         {
             ProgressLayout.visibility=View.GONE
             val list=DBAsync(activity as Context).execute().get()
+            if(list.isEmpty())
+            {
+
+                rlIsEmpty.visibility=View.VISIBLE
+            }
             for(element in list)
             {
                 val restaurant=Restaurant(

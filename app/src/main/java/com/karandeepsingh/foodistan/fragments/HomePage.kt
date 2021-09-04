@@ -20,6 +20,7 @@ import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+import com.karandeepsingh.foodistan.APIKEY
 import com.karandeepsingh.foodistan.R
 import com.karandeepsingh.foodistan.adapter.RestaurantAdapter
 import com.karandeepsingh.foodistan.model.Restaurant
@@ -100,10 +101,11 @@ class HomePage : Fragment() {
                     }
 
                 }){
+
                 override fun getHeaders(): MutableMap<String, String> {
                     val headers=HashMap<String,String>()
                     headers["Content-type"]="application/json"
-                    headers["Token"]="4996a5e2b7be6f"
+                    headers["Token"]=APIKEY().token
                     return headers
                 }
             }

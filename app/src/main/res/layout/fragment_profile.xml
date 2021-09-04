@@ -25,7 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/imgProfilePic"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         android:fontFamily="@font/dancing_script_bold"
         android:padding="6dp"
         android:text="@string/name"
@@ -38,18 +38,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtName"
-        android:layout_margin="10dp"
+        android:layout_margin="7dp"
         android:padding="6dp"
         android:text="User Name"
         android:textColor="@color/white"
-        android:textSize="26sp" />
+        android:textSize="24sp" />
 
     <TextView
         android:id="@+id/txtMobile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtUserName"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         android:fontFamily="@font/dancing_script_bold"
         android:padding="6dp"
         android:text="Mobile Number"
@@ -61,17 +61,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtMobile"
-        android:layout_margin="10dp"
+        android:layout_margin="7dp"
         android:padding="6dp"
         android:text="9922887700"
         android:textColor="@color/white"
-        android:textSize="26sp" />
+        android:textSize="24sp" />
     <TextView
         android:id="@+id/txtEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtUserMobile"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         android:fontFamily="@font/dancing_script_bold"
         android:padding="6dp"
         android:text="E-Mail"
@@ -83,17 +83,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtEmail"
-        android:layout_margin="10dp"
+        android:layout_margin="7dp"
         android:padding="6dp"
         android:text="Useremail@gmail.com"
         android:textColor="@color/white"
-        android:textSize="26sp" />
+        android:textSize="24sp" />
     <TextView
         android:id="@+id/txtAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtUserEmail"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         android:fontFamily="@font/dancing_script_bold"
         android:padding="6dp"
         android:text="Address"
@@ -105,11 +105,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtAddress"
-        android:layout_margin="10dp"
+        android:layout_margin="7dp"
         android:padding="6dp"
         android:text="Users Address "
         android:textColor="@color/white"
-        android:textSize="26sp" />
+        android:textSize="24sp" />
 
 
 </RelativeLayout>
