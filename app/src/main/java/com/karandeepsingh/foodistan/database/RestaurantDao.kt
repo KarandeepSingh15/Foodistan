@@ -17,3 +17,18 @@ interface RestaurantDao {
     fun getRestaurantById(bookId:Int):RestaurantEntity
 
 }
+@Dao
+interface OrderDao {
+    @Insert
+    fun insertOrder(orderEntity: OrderEntity)
+    @Delete
+    fun deleteOrder(orderEntity: OrderEntity)
+    @Query("delete from order_table")
+    fun deleteAllOrder()
+    @Query("select * from order_table")
+    fun getOrder():List<OrderEntity>
+    @Query("select * from order_table where restaurant_name=:restaurantName")
+    fun getOrderByRestaurantName(restaurantName:String):OrderEntity
+
+
+}

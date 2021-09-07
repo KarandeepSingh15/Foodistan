@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="80dp"
+    android:layout_height="60dp"
     android:orientation="horizontal"
     android:weightSum="9.5">
 
     <ImageView
         android:layout_width="0dp"
-        android:layout_height="35dp"
+        android:layout_height="33dp"
         android:layout_gravity="center_vertical"
         android:layout_weight="1.5"
         android:src="@drawable/ic_listitem" />
@@ -15,19 +15,19 @@
         android:id="@+id/txtItemName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:padding="6dp"
         android:layout_gravity="center_vertical"
-        android:layout_margin="15dp"
+
         android:text="@string/item_name"
         android:layout_weight="5"/>
     <TextView
         android:id="@+id/txtItemPrice"
         android:layout_width="0dp"
         android:text="Rs.200"
-        android:padding="6dp"
+        android:paddingLeft="35dp"
+        android:textSize="16sp"
         android:layout_gravity="center_vertical"
-        android:layout_margin="15dp"
         android:layout_height="wrap_content"
         android:layout_weight="3" />
 

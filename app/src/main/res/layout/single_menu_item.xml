@@ -22,7 +22,7 @@
             android:id="@+id/txtItemName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
+            android:textSize="17sp"
             android:text="MenuItemName"
             android:textStyle="bold"
             android:padding="3dp"
@@ -34,7 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/txtItemName"
-            android:textSize="15sp"
+            android:textSize="14sp"
             android:text="Rs.200"
             android:layout_marginStart="6dp"
             android:padding="3dp"/>

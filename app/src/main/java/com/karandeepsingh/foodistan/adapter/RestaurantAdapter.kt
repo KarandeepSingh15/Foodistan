@@ -1,16 +1,21 @@
 package com.karandeepsingh.foodistan.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.os.AsyncTask
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.inflate
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
 import com.karandeepsingh.foodistan.R
+import com.karandeepsingh.foodistan.activity.RestaurantDetails
 import com.karandeepsingh.foodistan.database.RestaurantDatabase
 import com.karandeepsingh.foodistan.database.RestaurantEntity
 import com.karandeepsingh.foodistan.model.Restaurant
@@ -18,12 +23,14 @@ import com.squareup.picasso.Picasso
 
 class RestaurantAdapter(val context: Context, val restaurantList: ArrayList<Restaurant>) :
     RecyclerView.Adapter<RestaurantAdapter.RestaurantViewHolder>() {
+
     class RestaurantViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         var imgRestaurant: ImageView = view.findViewById(R.id.imgRestaurant)
         var txtRestaurantName: TextView = view.findViewById(R.id.txtRestaurantName)
         var txtPricePerPerson: TextView = view.findViewById(R.id.txtPricePerPerson)
         var txtFav: TextView = view.findViewById(R.id.txtFav)
         var txtRestaurantRating: TextView = view.findViewById(R.id.txtRestaurantRating)
+        var singleRestaurantItem:CardView=view.findViewById(R.id.singleRestaurantItem)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RestaurantViewHolder {
@@ -86,6 +93,14 @@ class RestaurantAdapter(val context: Context, val restaurantList: ArrayList<Rest
                     Toast.makeText(context,"Error Occurred while removing from Favourites",Toast.LENGTH_SHORT).show()
                 }
             }
+        }
+        holder.singleRestaurantItem.setOnClickListener {
+            val bundle= Bundle()
+            bundle.putString("restaurant_id",restaurant.restaurantId)
+            bundle.putString("restaurant_name",restaurant.restaurantName)
+            val intent=Intent(context,RestaurantDetails::class.java)
+            intent.putExtra("restaurant_details",bundle)
+            context.startActivity(intent)
         }
 
     }

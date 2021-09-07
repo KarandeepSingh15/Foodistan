@@ -7,9 +7,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.view.LayoutInflater
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.FrameLayout
+import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
@@ -30,6 +32,8 @@ class HomeScreen : AppCompatActivity() {
     lateinit var FrameLayout: FrameLayout
     lateinit var navigationView: NavigationView
     lateinit var sharedPreferences: SharedPreferences
+    lateinit var txtNavigationHeaderSubtext:TextView
+    lateinit var txtNavigationHeaderText:TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         var previousItem: MenuItem? = null
 
@@ -39,8 +43,13 @@ class HomeScreen : AppCompatActivity() {
         toolbar = findViewById(R.id.toolbar)
         FrameLayout = findViewById(R.id.FrameLayout)
         navigationView = findViewById(R.id.navigationView)
+        val NavigationHeader=navigationView.getHeaderView(0)
+        txtNavigationHeaderText=NavigationHeader.findViewById(R.id.txtNavigationHeaderText)
+        txtNavigationHeaderSubtext=NavigationHeader.findViewById(R.id.txtNavigationHeaderSubtext)
         sharedPreferences =
             getSharedPreferences(getString(R.string.preference_file_name), Context.MODE_PRIVATE)
+        txtNavigationHeaderText.text=sharedPreferences.getString("name","Navigation Drawer")
+        txtNavigationHeaderSubtext.text=sharedPreferences.getString("mobile_number","")
 
         setSupportActionBar(toolbar)
         openHome()
