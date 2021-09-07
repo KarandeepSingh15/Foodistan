@@ -14,7 +14,7 @@
             android:icon="@drawable/ic_favourites"
             android:title="@string/favourites" />
         <item
-            android:id="@+id/OrderHistory"
+            android:id="@+id/OrderHistoryFragment"
             android:icon="@drawable/ic_order_history"
             android:title="@string/order_history" />
 

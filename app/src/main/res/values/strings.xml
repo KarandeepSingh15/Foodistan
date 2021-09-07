@@ -42,4 +42,5 @@
     <string name="cost_high_to_low">Cost(High To Low)</string>
     <string name="rating">Rating</string>
     <string name="sort_by">Sort By?</string>
+    <string name="you_haven_t_placed_any_order_yet">You Haven\'t Placed Any Order Yet</string>
 </resources>

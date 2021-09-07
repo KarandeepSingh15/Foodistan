@@ -4,20 +4,61 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.OrderHistory">
-<TextView
-    android:id="@+id/txtPreviousOrder"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:textSize="18sp"
-    android:padding="6dp"
-    android:layout_margin="18dp"
-    android:text="Your Previous order are listed below:"/>
+
+    <TextView
+        android:id="@+id/txtPreviousOrder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="18dp"
+        android:padding="6dp"
+        android:text="Your Previous order are listed below:"
+        android:textSize="18sp" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RecyclerPreviousOrder"
-        android:padding="6dp"
-        android:layout_below="@+id/txtPreviousOrder"
-        android:layout_margin="10dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_below="@+id/txtPreviousOrder"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:padding="6dp" />
 
+    <RelativeLayout
+        android:id="@+id/ProgressLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <ProgressBar
+            android:id="@+id/ProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlIsEmpty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_above="@+id/txtEmpty"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/ic_cart" />
+
+        <TextView
+            android:id="@+id/txtEmpty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_margin="15dp"
+            android:padding="6dp"
+            android:text="@string/you_haven_t_placed_any_order_yet"
+            android:textSize="18sp" />
+    </RelativeLayout>
 </RelativeLayout>

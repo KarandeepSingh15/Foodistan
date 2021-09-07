@@ -19,10 +19,7 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import com.karandeepsingh.foodistan.R
-import com.karandeepsingh.foodistan.fragments.FAQ
-import com.karandeepsingh.foodistan.fragments.Favourites
-import com.karandeepsingh.foodistan.fragments.HomePage
-import com.karandeepsingh.foodistan.fragments.Profile
+import com.karandeepsingh.foodistan.fragments.*
 
 class HomeScreen : AppCompatActivity() {
 
@@ -32,8 +29,8 @@ class HomeScreen : AppCompatActivity() {
     lateinit var FrameLayout: FrameLayout
     lateinit var navigationView: NavigationView
     lateinit var sharedPreferences: SharedPreferences
-    lateinit var txtNavigationHeaderSubtext:TextView
-    lateinit var txtNavigationHeaderText:TextView
+    lateinit var txtNavigationHeaderSubtext: TextView
+    lateinit var txtNavigationHeaderText: TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         var previousItem: MenuItem? = null
 
@@ -43,13 +40,13 @@ class HomeScreen : AppCompatActivity() {
         toolbar = findViewById(R.id.toolbar)
         FrameLayout = findViewById(R.id.FrameLayout)
         navigationView = findViewById(R.id.navigationView)
-        val NavigationHeader=navigationView.getHeaderView(0)
-        txtNavigationHeaderText=NavigationHeader.findViewById(R.id.txtNavigationHeaderText)
-        txtNavigationHeaderSubtext=NavigationHeader.findViewById(R.id.txtNavigationHeaderSubtext)
+        val NavigationHeader = navigationView.getHeaderView(0)
+        txtNavigationHeaderText = NavigationHeader.findViewById(R.id.txtNavigationHeaderText)
+        txtNavigationHeaderSubtext = NavigationHeader.findViewById(R.id.txtNavigationHeaderSubtext)
         sharedPreferences =
             getSharedPreferences(getString(R.string.preference_file_name), Context.MODE_PRIVATE)
-        txtNavigationHeaderText.text=sharedPreferences.getString("name","Navigation Drawer")
-        txtNavigationHeaderSubtext.text=sharedPreferences.getString("mobile_number","")
+        txtNavigationHeaderText.text = sharedPreferences.getString("name", "Navigation Drawer")
+        txtNavigationHeaderSubtext.text = sharedPreferences.getString("mobile_number", "")
 
         setSupportActionBar(toolbar)
         openHome()
@@ -78,6 +75,11 @@ class HomeScreen : AppCompatActivity() {
                     openHome()
                     supportActionBar?.title = "All Restaurants"
 
+                }
+                R.id.OrderHistoryFragment -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.FrameLayout, OrderHistory()).commit()
+                    supportActionBar?.title="My Previous Orders"
                 }
                 R.id.Favourites -> {
                     supportFragmentManager.beginTransaction().replace(
