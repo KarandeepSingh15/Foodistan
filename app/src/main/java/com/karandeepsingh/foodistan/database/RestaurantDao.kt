@@ -15,6 +15,8 @@ interface RestaurantDao {
     fun getAllRestaurants():List<RestaurantEntity>
     @Query("Select * from restaurant where Id=:bookId")
     fun getRestaurantById(bookId:Int):RestaurantEntity
+    @Query("Delete from restaurant")
+    fun deleteAllFavourites()
 
 }
 @Dao

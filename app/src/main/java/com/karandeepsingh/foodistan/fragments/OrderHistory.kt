@@ -48,6 +48,7 @@ class OrderHistory : Fragment() {
         ProgressLayout=view.findViewById(R.id.ProgressLayout)
         ProgressLayout.visibility=View.VISIBLE
         rlIsEmpty=view.findViewById(R.id.rlIsEmpty)
+        rlIsEmpty.visibility=View.GONE
 
         if (activity != null) {
             sharedPreferences=activity?.getSharedPreferences(getString(R.string.preference_file_name),Context.MODE_PRIVATE) as SharedPreferences

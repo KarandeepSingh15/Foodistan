@@ -3,6 +3,7 @@ package com.karandeepsingh.foodistan.activity
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -17,8 +18,10 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.room.Room
 import com.google.android.material.navigation.NavigationView
 import com.karandeepsingh.foodistan.R
+import com.karandeepsingh.foodistan.database.RestaurantDatabase
 import com.karandeepsingh.foodistan.fragments.*
 
 class HomeScreen : AppCompatActivity() {
@@ -109,6 +112,8 @@ class HomeScreen : AppCompatActivity() {
                     alert.setPositiveButton("Yes") { text, Listener ->
                         sharedPreferences.edit().clear().apply()
                         val intent = Intent(this@HomeScreen, LoginActivity::class.java)
+                        val asyncTask=RemoveDBAsync(this@HomeScreen as Context).execute()
+                        print(asyncTask.get())
                         startActivity(intent)
                         finish()
                     }
@@ -152,4 +157,14 @@ class HomeScreen : AppCompatActivity() {
         }
 
     }
+    class RemoveDBAsync(val context: Context):AsyncTask<Void,Void,Boolean>()
+    {
+        val db= Room.databaseBuilder(context,RestaurantDatabase::class.java,"restaurant_db").build()
+        override fun doInBackground(vararg params: Void?): Boolean {
+            db.restaurantDao().deleteAllFavourites()
+            return true
+        }
+
+    }
+
 }
